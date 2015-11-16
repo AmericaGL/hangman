@@ -1,51 +1,46 @@
-// <!-- PsuedoCode
-// 1)User starts the Game
-// 	a)game starts and creates one word and give each letter a single row of seven cells in this case.
-// 2)Game play begins
-// 	a)prompt the user for a guess
-// 	b)repeat the following until the hangman is hanged("A", "E" , "D")
-// 	b)check the user guess against the secret word to look for miss, hit, or hang
-// 3)Game finishes
-// 	a)Give the user a rating based on the number of guess
-// 	("You are fired!")
-//  -->
+// Class definition -- cheat sheet
+// var Student = function(firstName, lastName, age){
+//   this.fullName = firstName;
+//   this.lastName = lastName;
+// 	 this.age = age;
+// };
 
-//  <!-- declare variables 
-// 1)Declare 5 var to hold the location of each letter dashed of the word. Lets call them letter1,letter2,letter3,letter4, letter5.
-// 2)Declare a var to hold the user's current guess. 
-// 	Let's call it guess!
-// 3)Declare a var to hold the number of hits. 
-// 	We call its hits and set it to 0!	
-// 4)Declare a var to hold the number of guesses. 
-// 	We call it guesses and set it to 0!	
-// 5)Declare a variable to keep track of whether the hangman is hanged or not.
-// 	Let's call it hangman and set it to false.	
-//  -->
+// Student.prototype.sayFullName = function(){
+// 	 console.log(this.fName + " " + this.lName);
+// };
 
-// <!--variables that been declared
-// var guess;
-// var hits = 0;
-// var guesses = 0;
-// var isHang = false;  
+// //Instance definition
+// var america = new Student("America", "Lopez", 25);
+// var david = new Student("David", "Lighton", 35);
 
-// <!--Game Logic  
-// LOOP: while the hangman is not hanged
-// 		GET: the user's guess
-// 		COMPARE: the user's input to valid input values
-// 		IF the user's guess is invalid
-// 			TELL user to enter is a valid number
-// 		ELSE	
-// 			ADD one to guesses
-// 			IF the user's guess matches a letter
-// 				ADD one to hits
-// 				IF number of hits equal to (word.length)
-// 					SET isHang to true 
-// 					TELL user that they #dumptrump
-// 				END IF
-//			END IF		
-// 		END ELSE
-// END LOOP
-// TELL user stats
+
+var Game = function(word) {
+	this.word = word;
+	this.guess = 0;
+	//split takes in a string and returns an array
+	this.guessedWord = word.split("");
+	//for loop
+		for (var i=0; i< word.length; i++){
+		//guessedWord[i] = "_"
+		this.guessedWord[i]="_";
+		}
+	this.guesses = [];
+	this.isHang = false;
+};
+
+// alert(str.indexOf('test'));  return position 
+
+//   alert(str.indexOf('fail')); /* -1 */
+//method that takes a letter, tries to find it in the word, puts it in the guessedword array
+
+
+var newGame = new Game("Donald");
+console.log(newGame.word);
+console.log(newGame.word[0]);
+//string can access just like array
+// //using instances
+// america.sayFullName();
+// david.sayFullName();
 
 var guess;
 var hits = 0;
@@ -77,6 +72,8 @@ while(isHang === false){
 }
 var stats = "You took " + guesses + " guesses to #dumptrump, which means " + "your hanging accuracy was " + (3/guesses);
 alert(stats);
+
+
 
 
 	
