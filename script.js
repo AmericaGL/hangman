@@ -13,10 +13,13 @@
 // var america = new Student("America", "Lopez", 25);
 // var david = new Student("David", "Lighton", 35);
 
-
+//string can access just like array
+// //using instances
+// america.sayFullName();
+// david.sayFullName();
 var Game = function(word) {
 	this.word = word;
-	this.guess = 0;
+	this.numGuess = 0;
 	//split takes in a string and returns an array
 	this.guessedWord = word.split("");
 	//for loop
@@ -27,20 +30,45 @@ var Game = function(word) {
 	this.guesses = [];
 	this.isHang = false;
 };
+//create a method for guessing a letter
+Game.prototype.guess = function(letter){
+  if(this.word.indexOf(letter) !== -1 ){
+	this.numGuess++;
+	this.guessedWord[this.word.indexOf(letter)] = letter;
+	}
+	console.log(this.guessedWord);
+};
+
+var User = function(name) {
+    this.name = name;
+    this.currentScore = 0;
+};
 
 // alert(str.indexOf('test'));  return position 
+
 
 //   alert(str.indexOf('fail')); /* -1 */
 //method that takes a letter, tries to find it in the word, puts it in the guessedword array
 
 
+//newGame.word[0]; //D
+//newGame.guessedWord[0]; // "_"
+
+//
+//creating the word
 var newGame = new Game("Donald");
 console.log(newGame.word);
 console.log(newGame.word[0]);
-//string can access just like array
-// //using instances
-// america.sayFullName();
-// david.sayFullName();
+
+var playGame = new Game("love");
+playGame.guess("o");
+//newGame.word[0]; //D
+//newGame.guessedWord[0]; // "_"
+
+//creating the user
+var firstUser = new User("Hilary");
+console.log(firstUser.name);
+
 
 var guess;
 var hits = 0;
