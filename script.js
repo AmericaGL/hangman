@@ -6,23 +6,26 @@
 // };
 
 // Student.prototype.sayFullName = function(){
-// 	 console.log(this.fName + " " + this.lName);
+// 	 console.log(this.fullName + " " + this.lastName);
 // };
 
 // //Instance definition
 // var america = new Student("America", "Lopez", 25);
 // var david = new Student("David", "Lighton", 35);
 
-//string can access just like array
-// //using instances
+// using instances
 // america.sayFullName();
 // david.sayFullName();
+
+
 var Game = function(word) {
 	this.word = word;
 	this.numGuess = 0;
-	//split takes in a string and returns an array
+	this.wrongGuess = 0;
+	this.correctGuess= 0;
+	//split takes in a string and returns an array of underscores
 	this.guessedWord = word.split("");
-	//for loop
+	//for loop 
 		for (var i=0; i< word.length; i++){
 		//guessedWord[i] = "_"
 		this.guessedWord[i]="_";
@@ -30,76 +33,43 @@ var Game = function(word) {
 	this.guesses = [];
 	this.isHang = false;
 };
+
 //create a method for guessing a letter
 Game.prototype.guess = function(letter){
   if(this.word.indexOf(letter) !== -1 ){
-	this.numGuess++;
+  	// alert(str.indexOf('test'));  will return position in an array 
+	// alert(str.indexOf('fail')); /* -1 */
+	this.correctGuess++;
 	this.guessedWord[this.word.indexOf(letter)] = letter;
+	} else{
+	//if guess is wrong, increase number of wrong guesses
+		this.wrongGuess++;
 	}
+	//this will change status of hangman when correct guesses fill the entire word
+	if(this.correctGuess === this.word.length){
+		this.isHang = true;
+	}
+	//this will create a memory box of letters that have been used
+	this.numGuess++;
+	this.guesses.push(letter);
 	console.log(this.guessedWord);
 };
+
+var playGame = new Game("love");
+playGame.guess("o");
+playGame.guess("v");
+playGame.guess("l");
+playGame.guess("e");
+
+var stats = "You took " + playGame.numGuess + " guesses to #dumptrump, which means " + "your hanging accuracy was " + (playGame.correctGuess/playGame.numGuess);
+alert(stats);
+
 
 var User = function(name) {
     this.name = name;
     this.currentScore = 0;
 };
 
-// alert(str.indexOf('test'));  return position 
-
-
-//   alert(str.indexOf('fail')); /* -1 */
-//method that takes a letter, tries to find it in the word, puts it in the guessedword array
-
-
-//newGame.word[0]; //D
-//newGame.guessedWord[0]; // "_"
-
-//
-//creating the word
-var newGame = new Game("Donald");
-console.log(newGame.word);
-console.log(newGame.word[0]);
-
-var playGame = new Game("love");
-playGame.guess("o");
-//newGame.word[0]; //D
-//newGame.guessedWord[0]; // "_"
-
-//creating the user
-var firstUser = new User("Hilary");
-console.log(firstUser.name);
-
-
-var guess;
-var hits = 0;
-var guesses=0;
-var isHang = false;
-
-while(isHang === false){
-	//check the user's guess
-	guess = prompt("Enter a letter from A-Z");
-	//check if its a letter or not
-	if(typeof guess !== string ){
-	//alerts the user to enter a letter not something else	
-		alert("Enter a letter");
-	}   else{
-		//the user guess looks valid so increase the number of guesses by one
-	  	guesses++;
-		//if the user guess matches a letter
-	  	if(guess === letter1 || guess === letter2 || letter3){
-	  	//add one to hits
-	  		hits++; 
-	  	}
-	  		//check if the words length equal to number of hits
-	  		if  (hits === 3){
-	  			isHang = true;
-	  			alert("Congrat! You #dumptrump!");
-	  		}
-		}
-
-}
-var stats = "You took " + guesses + " guesses to #dumptrump, which means " + "your hanging accuracy was " + (3/guesses);
-alert(stats);
 
 
 
