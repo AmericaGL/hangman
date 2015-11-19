@@ -12,27 +12,33 @@
 </head>
 <body class = "bg-primary">
 <div class = 'container'>
-	<div class = 'col-md-12'>
+	<div class = 'col-md-12 col-sm-12 col-lg-12 col-xs-12'>
 	<h1><img src="https://dl.dropbox.com/s/tl08riszkqsl8jc/coollogo_com-115531772.png?dl=0" alt="title of the logo" class="img-rounded"></h1>
 	</div>
 </div>
 <div class = 'container bg-primary'>
 	<div class = 'row'>
-		<div class = 'col-md-12'>
+		<div class = 'col-md-4 col-sm-4 col-lg-4 col-xs-4'>
 			<div class="form-group">
-  				<label class="control-label">Input with warning</label>
-  				<input type="text" class="form-control" id="inputWarning1" placeholder="Text input">
+  				<label class="control-label">Enter your Guess</label>
+  				<input type="text" class="form-control" id="guessBox" placeholder="Text input">
 			</div>
 		</div>
 	</div>
 	<div class = 'row'>	
-		<div class ='col-md-8 col-md-offset-4'>
-		<button type='button' class="btn btn-primary">Guess</button>
+		<div class ='col-md-12'>
+  		<button type='button' class="btn btn-primary" id="guessButton">Guess</button>
+  	</div>
 	</div>
-	</div>
+  <div class ='row'>
+    <div class ='col-md-12'>
+    <h1 id="guessLetters"> </h1>
+    </div>
+  </div>
 </div>  	
 </body>
  <script src='https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
   <!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js" integrity="sha512-K1qjQ+NcF2TYO/eI3M6v8EiNYZfA95pQumfvcVrTHtwQVDG+aHRqLi/ETn2uB+1JqwYqVG3LIvdm9lj6imS/pQ==" crossorigin="anonymous"></script>
+  <script src = 'script.js'></script>
 </html>

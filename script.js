@@ -48,6 +48,7 @@ Game.prototype.guess = function(letter){
 	//this will change status of hangman when correct guesses fill the entire word
 	if(this.correctGuess === this.word.length){
 		this.isHang = true;
+		//code here to change the dom
 	}
 	//this will create a memory box of letters that have been used
 	this.numGuess++;
@@ -56,13 +57,21 @@ Game.prototype.guess = function(letter){
 };
 
 var playGame = new Game("love");
-playGame.guess("o");
-playGame.guess("v");
-playGame.guess("l");
-playGame.guess("e");
 
-var stats = "You took " + playGame.numGuess + " guesses to #dumptrump, which means " + "your hanging accuracy was " + (playGame.correctGuess/playGame.numGuess);
-alert(stats);
+var guessButton = $('#guessButton').click(function(){
+	var grabValue = $('#guessBox').val();
+	playGame.guess(grabValue);
+	$('#guessLetters').append($('<span>'+ grabValue + ' ' + '</span>'));
+});
+
+
+// playGame.guess("o");
+// playGame.guess("v");
+// playGame.guess("l");
+// playGame.guess("e");
+
+// var stats = "You took " + playGame.numGuess + " guesses to #dumptrump, which means " + "your hanging accuracy was " + (playGame.correctGuess/playGame.numGuess);
+// alert(stats);
 
 
 var User = function(name) {
