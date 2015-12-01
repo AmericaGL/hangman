@@ -1,31 +1,12 @@
+	// 	- game starts and creates one word 
+// 	- each letter receives a single row  
+// - Game Play Begins
+// 	- prompt the user for a guess 
+// 	- repeat the following until guesses run out or Trump is hanged
+// - Game finishes
+// 	- check the user for a rating based on number of overall guesses and misses. 
 
-
-
-	
-
-
-
-
-// Class definition -- cheat sheet
-// var Student = function(firstName, lastName, age){
-//   this.fullName = firstName;
-//   this.lastName = lastName;
-// 	 this.age = age;
-// };
-
-// Student.prototype.sayFullName = function(){
-// 	 console.log(this.fullName + " " + this.lastName);
-// };
-
-// //Instance definition
-// var america = new Student("America", "Lopez", 25);
-// var david = new Student("David", "Lighton", 35);
-
-// using instances
-// america.sayFullName();
-// david.sayFullName();
-
-
+// STEP 1: User starts the Game
 var Game = function(word) {
 	this.word = word;
 	this.numGuess = 0;
@@ -49,7 +30,7 @@ var Game = function(word) {
 	this.isHang = false;
 };
 
-//create a method for guessing a letter
+//Step 2: Create a method for guessing a letter
 Game.prototype.guess = function(letter){
   if(this.word.indexOf(letter) !== -1 ){
   	// alert(str.indexOf('test'));  will return position in an array 
@@ -84,24 +65,38 @@ Game.prototype.guess = function(letter){
 	 $('#wordstatus').text(noSign);
 };
 
-//WORD LOVE IS SET UP HERE!!!
+var playGame = new Game(randomElement());
 
- // Game.prototype.randomElement = function () {
- // var words = ['cat', 'tree', 'swing', 'around', 'scientist'];
- //    return this[Math.floor(Math.random() * this.length)];
- // };
+var guessButton = $('#guessButton').click(function(){
+var grabValue = $('#guessBox').val();
+	// use joing to 
+	// $('#wordstatus').text(grabValue);
+	
+	//Below keeps record of letters that have been used?
+playGame.guess(grabValue);
+$('#guessLetters').append($('<span>'+ grabValue + ' ' + '</span>'));
+});
+
+//WORD LOVE IS SET UP HERE!!!
+function randomElement () {
+var words = ['cat', 'tree', 'swing', 'around', 'scientist'];
+    var rand = words[Math.floor(Math.random() * words.length)];
+    return rand;
+}
+
+
 
 // This array holds the words we are going to choose from.
 // Feel free to add new words!
 // var words = ['cat', 'tree', 'swing', 'around', 'scientist'];
 
-// // This function will pick our word
+// This function will pick our word
 // function chooseWord () {
 //     // Write code here
 //     var rand = words[Math.floor(Math.random() * words.length)];
 //     return rand;
 // };
-// var randWord = function randomElement() {
+// function randomElement() {
 //       var dictionaryQueryRequest;
 //       searchUrl = "http://api.wordnik.com/v4/words.json/randomWord?api_key=502ed3f9a5bd08a23400f05524400782b7eb1421762314fea";
 //       // Generate the requested object
@@ -109,6 +104,7 @@ Game.prototype.guess = function(letter){
 //             type: "GET",
 //             dataType: 'json',
 //             url: searchUrl
+//             async: false,
 //       });
 //       dictionaryQueryRequest.done(function (data) {
 //       	console.log(data.word);
@@ -116,20 +112,8 @@ Game.prototype.guess = function(letter){
 //       dictionaryQueryRequest.fail(function (error) {
 //            console.log("Something Failed calling Wordnik Request:");
 //            console.log(error);
-//          });
-// };
-
-var playGame = new Game("demolition");
-
-var guessButton = $('#guessButton').click(function(){
-	var grabValue = $('#guessBox').val();
-	// use joing to 
-	// $('#wordstatus').text(grabValue);
-	
-	//Below keeps record of letters that have been used?
-	playGame.guess(grabValue);
-	$('#guessLetters').append($('<span>'+ grabValue + ' ' + '</span>'));
-});
+//         });
+// }
 
 
 // playGame.guess("o");
@@ -137,14 +121,14 @@ var guessButton = $('#guessButton').click(function(){
 // playGame.guess("l");
 // playGame.guess("e");
 
-var stats = "You took " + playGame.numGuess + " guesses to #dumptrump, which means " + "your hanging accuracy was " + (playGame.correctGuess/playGame.numGuess);
-var stats = "You took " + guesses + " guesses to #dumptrump, which means " + "your hanging accuracy was " + (3/guesses);
-alert(stats);
+// var stats = "You took " + playGame.numGuess + " guesses to #dumptrump, which means " + "your hanging accuracy was " + (playGame.correctGuess/playGame.numGuess);
+// var stats = "You took " + guesses + " guesses to #dumptrump, which means " + "your hanging accuracy was " + (3/guesses);
+// alert(stats);
 
-var User = function(name) {
-    this.name = name;
-    this.currentScore = 0;
-};
+// var User = function(name) {
+//     this.name = name;
+//     this.currentScore = 0;
+// };
 // Game.prototype.randomElement = function () {
 //    return this[Math.floor(Math.random() * this.length)]
 // }
