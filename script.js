@@ -78,28 +78,40 @@ Game.prototype.guess = function(letter){
 
 //WORD LOVE IS SET UP HERE!!!
 
-// Game.prototype.randomElement = function () {
-//    return this[Math.floor(Math.random() * this.length)]
-// }
-var randomFact = function randomElement() {
-      var dictionaryQueryRequest;
-      searchUrl = "http://api.wordnik.com/v4/words.json/randomWord?api_key=502ed3f9a5bd08a23400f05524400782b7eb1421762314fea";
-      // Generate the requested object
-      dictionaryQueryRequest = $.ajax({
-            type: "GET",
-            dataType: 'json',
-            url: searchUrl
-      });
-      dictionaryQueryRequest.done(function (data) {
-      	console.log(data.word);
-      });
-      dictionaryQueryRequest.fail(function (error) {
-           console.log("Something Failed calling Wordnik Request:");
-           console.log(error);
-         });
-};
+ // Game.prototype.randomElement = function () {
+ // var words = ['cat', 'tree', 'swing', 'around', 'scientist'];
+ //    return this[Math.floor(Math.random() * this.length)];
+ // };
 
-var playGame = new Game("love");
+// This array holds the words we are going to choose from.
+// Feel free to add new words!
+// var words = ['cat', 'tree', 'swing', 'around', 'scientist'];
+
+// // This function will pick our word
+// function chooseWord () {
+//     // Write code here
+//     var rand = words[Math.floor(Math.random() * words.length)];
+//     return rand;
+// };
+// var randWord = function randomElement() {
+//       var dictionaryQueryRequest;
+//       searchUrl = "http://api.wordnik.com/v4/words.json/randomWord?api_key=502ed3f9a5bd08a23400f05524400782b7eb1421762314fea";
+//       // Generate the requested object
+//       dictionaryQueryRequest = $.ajax({
+//             type: "GET",
+//             dataType: 'json',
+//             url: searchUrl
+//       });
+//       dictionaryQueryRequest.done(function (data) {
+//       	console.log(data.word);
+//       });
+//       dictionaryQueryRequest.fail(function (error) {
+//            console.log("Something Failed calling Wordnik Request:");
+//            console.log(error);
+//          });
+// };
+
+var playGame = new Game("demolition");
 
 var guessButton = $('#guessButton').click(function(){
 	var grabValue = $('#guessBox').val();
