@@ -81,23 +81,7 @@ Game.prototype.guess = function(letter){
 // Game.prototype.randomElement = function () {
 //    return this[Math.floor(Math.random() * this.length)]
 // }
-var randomFact = function randomElement() {
-      var dictionaryQueryRequest;
-      searchUrl = "http://api.wordnik.com/v4/words.json/randomWord?api_key=502ed3f9a5bd08a23400f05524400782b7eb1421762314fea";
-      // Generate the requested object
-      dictionaryQueryRequest = $.ajax({
-            type: "GET",
-            dataType: 'json',
-            url: searchUrl
-      });
-      dictionaryQueryRequest.done(function (data) {
-      	console.log(data.word);
-      });
-      dictionaryQueryRequest.fail(function (error) {
-           console.log("Something Failed calling Wordnik Request:");
-           console.log(error);
-         });
-};
+
 
 var playGame = new Game("love");
 
