@@ -143,6 +143,29 @@ var words = ['cat', 'tree', 'swing', 'around', 'scientist'];
 // };
 // chooseWord();
 
+// function randomElement() {
+//   var dictionaryQueryRequest;
+//   searchUrl = "http://api.wordnik.com/v4/words.json/randomWord?api_key=502ed3f9a5bd08a23400f05524400782b7eb1421762314fea";
+//   // Generate the requested object
+//   $.ajax({
+//         type: "GET",
+//         dataType: 'json',
+//         url: searchUrl,
+//         async: false,
+//         success: function(data){
+//           dictionaryQueryRequest = data;
+//           //do others
+//         }
+//         error: function(error){
+//           console.log('Something failed calling Wordnik Request:');
+//           console.log(error);
+//         }
+//   });
+//   dictionaryQueryRequest.done(function (data) {
+//   	console.log(data.word);
+//   });
+// }
+
 
 
 
